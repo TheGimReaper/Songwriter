@@ -15,5 +15,4 @@ public class Layer {
     public LinkedList< Note > getLine() {
         return line;
     }
-  
-}
+    
