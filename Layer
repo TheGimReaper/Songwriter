@@ -15,4 +15,11 @@ public class Layer {
     public LinkedList< Note > getLine() {
         return line;
     }
-    
+    public String stringify() {
+        String retStr = "[" + instrument + "]";
+        for( int i = 0; i < l.length() - 1; i++ ) {
+        retStr = retStr + " " + l.get( i ).stringify();
+        }
+        return retStr;
+    }
+}
