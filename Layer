@@ -1,0 +1,19 @@
+public class Layer {
+    
+    private String instrument;
+    private LinkedList< Note > line;
+    
+    public void setInstrument( String i ) {
+        instrument = i;
+    }
+    public String getInstrument() {
+        return instrument;
+    }
+    public void setLine( LinkedList< Note > l ) {
+        line = l;
+    }
+    public LinkedList< Note > getLine() {
+        return line;
+    }
+  
+}
