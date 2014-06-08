@@ -3,7 +3,6 @@ public class Song{
    int layers; int start; int end;
    Song(){
      layers = 4; start = 0; end = 4;bpm = 100;
-
       }
    void display(){
      for(int y = 1; y < 8; y++){

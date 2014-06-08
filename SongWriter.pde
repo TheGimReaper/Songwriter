@@ -1,5 +1,5 @@
 import java.util.*;
-ArrayList<RectButton> notes = new ArrayList<RectButton>(); Song song = new Song();
+ArrayList<RectButton> notes = new ArrayList<RectButton>(); Song song = new Song(); ArrayList<Instrument> Tabs = new ArrayList<Instrument>();
 void setup() {
    size(1470, 960 , P2D);
    background(150, 150, 150);
