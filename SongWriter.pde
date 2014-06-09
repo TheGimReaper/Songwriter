@@ -6,7 +6,7 @@ public ArrayList<Instrument> Tabs = new ArrayList<Instrument>(); public int curr
 public ArrayList<OctaveSwitch> octave = new ArrayList<OctaveSwitch>(); public int currentoctave = 1;
 public Switch play; public Switch add;
 public Volume volume; public int first; public int second; public boolean alternate = true;
-public Switch dotted;
+public Switch dotted; public Switch flat; public Switch sharp; boolean playing = false;
 public String currentname = "";
 void setup() {
    size(1050, 750 , P2D);
@@ -17,7 +17,9 @@ void setup() {
      img = loadImage((int)Math.pow(2 , x) + "note.png");
      notes.add(new NoteSwitch(new Note((x+1)*150 + 50 , 0 , (int)Math.pow(2 , x) , img ,  "C" , 50 , 100 , currentoctave) , (x+1)*150 , 0 , 210 , 100 , (int)Math.pow(2 , x)));
    }
-   dotted = new Switch("Dotted" , 75 , 50 , 200 , 150);
+   dotted = new Switch("Dotted" , 75 , 35 , 200 , 100);
+   flat = new Switch("Flat" , 75 , 35 , 200 , 135);
+   sharp = new Switch("Sharp" , 75 , 35 , 200 , 170);
    play = new Switch("Play" , 50 , 50 , 950 , 150);
    volume = new Volume(50 , 75 , 50 , 800 , 150);
    add = new Switch("Add" , 75 , 50 , 50 , 150);
@@ -30,6 +32,8 @@ void setup() {
    octave.get(0).turnon();  
    song.display();
    dotted.display();
+   flat.display();
+   sharp.display();
    add.display();
 }
 void draw() {
@@ -41,9 +45,17 @@ void draw() {
      Tabs.get(x).display();      
    song.display();
    dotted.display();
+   flat.display();
+   sharp.display();
    play.display();
    volume.display();
    add.display();
+   /*if (play.get() && !playing){
+     Player player = new Player();
+     String total = "";
+     for (Note x: song.getNotes()){
+       total += x.stringify(); }
+     player.play(total);  } */
 }
 void mouseClicked(){
    for(int x = 0; x < notes.size(); x++)
@@ -51,8 +63,11 @@ void mouseClicked(){
    for(int x = 0; x < octave.size(); x++)
      octave.get(x).check();    
    for(int x = 0; x < Tabs.size(); x++)
-     Tabs.get(x).check();    
-   dotted.check();  
+     Tabs.get(x).check();   
+   song.check(); 
+   dotted.check();
+   flat.check();  
+   sharp.check();    
    play.check();
    volume.check();
    add.check();

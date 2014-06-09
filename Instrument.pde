@@ -23,6 +23,8 @@ public class Instrument{
    }
    public void setname(String x){
      name = x; }
+   public String getname(){
+     return name; }  
    public void setnumber(int x){
      number = x; }
    public Song getsong(){
