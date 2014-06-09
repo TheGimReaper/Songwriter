@@ -18,6 +18,8 @@ public class Volume {
    }
    public void setVolume(int x){
      volume = x; }
+   public int getvolume(){
+     return volume; }  
    public void change(){
      if (Is)
        turnoff();

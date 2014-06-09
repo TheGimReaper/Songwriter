@@ -50,12 +50,18 @@ void draw() {
    play.display();
    volume.display();
    add.display();
-   /*if (play.get() && !playing){
+   if (play.get() && !playing){
      Player player = new Player();
-     String total = "";
-     for (Note x: song.getNotes()){
-       total += x.stringify(); }
-     player.play(total);  } */
+     String total = "x[Volume]=" + volume.getvolume() * 160 + " ";
+     for (int y = 0; y < Tabs.size(); y++ ){
+       total += "V[" + y + "] ";
+       Song play = Tabs.get(y).getsong();
+       for (Note x: play.getNotes()){
+         total += x.stringify() + " "; }
+       }
+     player.play(total);  
+     play.turnoff();  
+   } 
 }
 void mouseClicked(){
    for(int x = 0; x < notes.size(); x++)
@@ -137,58 +143,58 @@ void keyPressed(){
      volume.setVolume(10 * first + second);  
    }  
    if (add.get()){
-     if (key == 'a')
-       currentname += "a";
-     if (key == 'b')
-       currentname += "b";
-     if (key == 'c')
-       currentname += "c";
-     if (key == 'd')
-       currentname += "d";
-     if (key == 'e')
-       currentname += "e";
-     if (key == 'f')
-       currentname += "f";
-     if (key == 'g')
-       currentname += "g";
-     if (key == 'h')
-       currentname += "h";
-     if (key == 'i')
-       currentname += "i";
-     if (key == 'j')
-       currentname += "j";
-     if (key == 'k')
-       currentname += "k";
-     if (key == 'l')
-       currentname += "l";
-     if (key == 'm')
-       currentname += "m";
-     if (key == 'n')
-       currentname += "n";
-     if (key == 'o')
-       currentname += "o";
-     if (key == 'p')
-       currentname += "p";
-     if (key == 'q')
-       currentname += "q";
-     if (key == 'r')
-       currentname += "r";
-     if (key == 's')
-       currentname += "s";
-     if (key == 't')
-       currentname += "t";
-     if (key == 'u')
-       currentname += "u";
-     if (key == 'v')
-       currentname += "v";
-     if (key == 'w')
-       currentname += "w";
-     if (key == 'x')
-       currentname += "x";
-     if (key == 'y')
-       currentname += "y";
-     if (key == 'z')
-       currentname += "z";
+     if (key == 'A')
+       currentname += "A";
+     if (key == 'B')
+       currentname += "B";
+     if (key == 'C')
+       currentname += "C";
+     if (key == 'D')
+       currentname += "D";
+     if (key == 'E')
+       currentname += "E";
+     if (key == 'F')
+       currentname += "F";
+     if (key == 'G')
+       currentname += "G";
+     if (key == 'H')
+       currentname += "H";
+     if (key == 'I')
+       currentname += "I";
+     if (key == 'J')
+       currentname += "J";
+     if (key == 'K')
+       currentname += "K";
+     if (key == 'L')
+       currentname += "L";
+     if (key == 'M')
+       currentname += "M";
+     if (key == 'N')
+       currentname += "N";
+     if (key == 'O')
+       currentname += "O";
+     if (key == 'P')
+       currentname += "P";
+     if (key == 'Q')
+       currentname += "Q";
+     if (key == 'R')
+       currentname += "R";
+     if (key == 'S')
+       currentname += "S";
+     if (key == 'T')
+       currentname += "T";
+     if (key == 'U')
+       currentname += "U";
+     if (key == 'V')
+       currentname += "V";
+     if (key == 'W')
+       currentname += "W";
+     if (key == 'X')
+       currentname += "X";
+     if (key == 'Y')
+       currentname += "Y";
+     if (key == 'Z')
+       currentname += "Z";
      if (keyCode == ENTER){
        Tabs.add(new Instrument(currentname , 0 , 200 + Tabs.size() * 50 , 75 , 50 , Tabs.size()));
        currentname = ""; add.turnoff();

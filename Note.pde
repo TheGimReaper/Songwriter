@@ -41,7 +41,7 @@ public class Note {
   public void display(){
     fill(0);
     if (dotted)
-      ellipse(coordx + 20 , coordy , 5 , 5);
+      ellipse(coordx + 25 , coordy , 5 , 5);
     if (flat)
       image(loadImage("flat.png") , coordx + 20 , coordy , 10 , 10);
     else if (sharp)

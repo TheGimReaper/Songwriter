@@ -23,6 +23,7 @@ public class Switch {
        turnon();
    }
    public void turnoff(){
+     playing = false;
      Is = false; fill = color (102 , 255 , 102); }
    public void turnon(){
      Is = true; fill = color (0 , 102 , 0); }
