@@ -1,0 +1,166 @@
+
+    public class Node<T> {
+
+        private T data;
+        private Node<T> next;
+
+        public Node() {
+            data = null;
+            next = null;
+        }
+
+        public Node( T d ) {
+            data = d;
+        }
+
+        public T getData() {
+            return data;
+        }
+        public void setData( T d )  {
+            data = d;
+        }
+
+        public Node<T>  getNext() {
+            return next;
+        }
+
+        public void setNext( Node<T> n ) {
+            next = n;
+        }
+
+        public String toString(){
+            String retStr = "Data: " + data;
+            Node<T> cactus = this;
+            while( cactus.getNext() != null ) {
+                retStr = retStr + " " +"\tNext: " + cactus.getNext().getData();
+                cactus = cactus.getNext();
+            }
+            return retStr;
+        }
+    }
+
+
+
+    private Node<T> head;
+    private int length = 0;
+    // private Node<String> preNode = new Node<String>( "" );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+    // TODO:FIX THIS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    private Node<T> tail = head;
+    public LinkedList() {
+        head = null;
+        // preNode.setNext( head );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    }
+
+    public void add( T s ) {
+        Node<T> tmp = new Node<T>( s );
+        /*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+          head=tmp;//this does not add to the front what does it do?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+          Response: it adds to the beginning :)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+        */
+        tmp.setNext(head);
+        head=tmp;
+        length++;
+        tail = getNode( length - 1 );
+    }
+
+    public void addEnd( T data ) {
+        Node<T> tmp = new Node<T>( data );
+        tail.setNext( tmp );
+        length++;
+        tail = getNode( length - 1 );
+    }
+
+    public void add( T s, int position ) {
+        if( position >= length() ) {
+            throw new RuntimeException( "Index out of bounds! Go back!" );
+        }
+        Node<T> tmp = new Node<T>( s );
+        if( position == 0 ) {
+            add( s );
+            length++;
+        }
+        else if( position > 0 && position < length() - 1 ) {
+            tmp.setNext( getNode( position ) );
+            getNode( position - 1 ).setNext( tmp );
+            length++;
+        }
+        else {
+            getNode( length() - 1 ).setNext( tmp );
+            length++;
+        }
+        tail = getNode( length - 1 );
+    }
+
+    public String get( int position ) {
+        Node<T> current = head;
+        String retStr = "";
+        for( int i = 0; i <= position; i++ ) {
+            retStr = ( String )current.getData();
+            current = current.getNext();
+        }
+        return retStr;
+    }
+    // TODO: Make Exceptions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+
+    public Node<T> getNode( int position ) {
+        Node<T> current = head;
+        for( int i = 0; i < position; i++ ) {
+            current = current.getNext();
+        }
+        return current;
+    }
+
+    public void set( int position, T newT ) {
+        if( position < 0 || position >= length() ) {
+            throw new RuntimeException( "Index out of bounds. Go back!" );
+        }
+        getNode( position ).setData( newT );
+    }
+
+    public void remove( int position ) {
+        if( position == 0 ) {
+            head = head.getNext();
+        }
+        else if( position == length() - 1 ) {
+            getNode( length() - 2 ).setNext( null );
+        }
+        else {
+            getNode( position - 1 ).setNext( getNode( position + 1 ) );
+        }
+        length--;
+        tail = getNode( length - 1);
+    }
+
+    public int find( T s ) {
+        int i = 0;
+        Node<T> current = head;
+        while( current.getNext() != null ) {
+            if( current.getData() == s ) {
+                return i;
+            }
+            i++;
+            current = current.getNext();
+        }
+        return -1;
+    }
+
+    public int length() {
+        return length;
+    }
+
+    public String toString(){
+        String retStr = "";
+        retStr = head.toString();
+        //how do we advance through the list?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        return retStr;
+    }
+}
+
+
+
+
+
+
+
+
+
