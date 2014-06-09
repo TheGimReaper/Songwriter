@@ -8,7 +8,7 @@ public class Note {
 
     public Note() {
         name = "C";
-        accidental = "n";
+        accidental = "";
         duration = "q";
         octave = 4;
         isDotted = false;
