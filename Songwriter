@@ -1,0 +1,100 @@
+import java.util.*;
+import org.jfugue.Player;
+public class Songwriter {
+
+    private ArrayList< Layer > layers = new ArrayList< Layer >();
+    private Layer current;
+    private int tempo;
+
+    public Songwriter() {
+        Layer temp = new Layer();
+        ArrayList<Layer> layers = new ArrayList<Layer>();
+        layers.add( temp );
+        tempo = 0;
+        current = temp;
+    }
+    
+    public void setLayers( ArrayList< Layer > l ) {
+        layers = l;
+    }
+    public ArrayList< Layer > getLayers() {
+        return layers;
+    }
+    public void setCurrent( Layer l ) {
+        current = l;
+    }
+    public Layer getCurrent() {
+        return current;
+    }
+    public void setTempo( int t ) {
+        tempo = t;
+    }
+    public int getTempo() {
+        return tempo;
+    }
+
+    public void addLayer() {
+        Layer temp = new Layer();
+        layers.add( temp );
+        setCurrent( temp );
+    }
+    public void addLayer( Layer l ) {
+        layers. add( l );
+        setCurrent( l );
+    }
+    public void deleteLayer( Layer l ) {
+        Layer temp = new Layer();
+        if( layers.size() == 1 ) {
+            layers.remove( layers.get( 1 ) );
+            layers.add( temp );
+            setCurrent( temp );
+	}
+        else{
+            int i = layers.indexOf( l );
+            layers.remove( l );
+            setCurrent( layers.get( i - 1 ) );
+	}
+    }
+    public String stringify() {
+	String retStr = "";
+	if( tempo > 0 ) {
+            retStr = retStr + "T" + getTempo() + " ";
+	}
+        for( int i = 0; i < layers.size(); i++ ) {
+            retStr = retStr + "V" + i + " " + layers.get( i ).stringify() + " ";
+	}
+        return retStr;
+    }
+
+    public static void main( String[] potatoes ) {
+	Note whitman = new Note( "C", "", "w", 5, false );
+	Note melville = new Note( "C", "", "w", 5, false );
+	Note wilde = new Note( "G", "", "w", 5, false );
+	Note twain = new Note( "G", "", "w", 5, false );
+	Note shaw = new Note( "A", "", "w", 5, false );
+	Note hardy = new Note( "A", "", "w", 5, false );
+	Note dickinson = new Note( "G", "", "w", 5, false );
+	Layer orwell = new Layer();
+	Layer joyce = new Layer();
+	orwell.addNote( whitman );
+	orwell.addNote( melville );
+	orwell.addNote( wilde );
+	joyce.addNote( twain );
+	joyce.addNote( shaw );
+	joyce.addNote( hardy );
+	joyce.addNote( dickinson );
+	Player nabakov = new Player();
+	Songwriter parker = new Songwriter();
+	parker.addLayer( orwell );
+	parker.addLayer( joyce );
+	parker.setTempo( 120 );
+	System.out.println( parker.stringify() );
+	nabakov.play( parker.stringify() );
+	parker.setTempo( 50 );
+	nabakov.play( parker.stringify() );
+	nabakov.close();
+
+    }
+
+
+}
