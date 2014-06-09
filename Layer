@@ -1,4 +1,3 @@
-import org.jfugue.Player;
 public class Layer {
 
     private String instrument;
@@ -10,7 +9,7 @@ public class Layer {
         instrument = "";
         line = new LinkedList< Note >();
         tsNum = 4;
-        tsDenom = "q";
+        tsDenom = 4;
     }
 
     public void setInstrument( String i ) {
@@ -37,107 +36,29 @@ public class Layer {
     public String getTSDenom() {
         return tsDenom;
     }
-    public int calcBeats() {
+    public String calcBeats() {
         return getBeatVal( tsDenom ) * tsNum;
     }
-    public int getBeatVal( String note ) {
-        if( note.equals( "w" ) ) {
-            return 32;
-        }
-        else if( note.equals( "h" ) ) {
-            return 16;
-        }
-        else if( note.equals( "q" ) ) {
-            return 8;
-        }
-        else if( note.equals( "i" ) ) {
-            return 4;
-        }
-        else if( note.equals( "x" ) ) {
-            return 2;
-        }
-        else {
-            return 1;
-        }
-    }
-    public void addNote( Note n ) {
-        if( line.length() == 0 ) {
-            line.add( n );
-        }
-        else{
-            line.addEnd( n );
-        }
-        // System.out.println( line );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    }
 
-    public void addNote( Note n, int pos ) {
-        if( line.length() == 0 ) {
-            line.add( n );
-        }
-        else{
-            line.add( n, pos );
-        }
-        // System.out.println( line );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    }
-
-    public void removeNote( Note n ) {
-        int pos = line.find( n );
-        line.remove( pos );
-    }
-
-    public void removeNote( int pos ) {
-        line.remove( pos );
-    }
-
-    // assumes that the each of the notes evenly fits into the measure                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    // assumes that the each of the notes evenly fits into the measure                                                                                                                                                                                           
     public String stringify() {
         int beatCount = 0;
         String retStr = "";
         if( !instrument.equals( "" ) ) {
-           retStr = "I[" + instrument + "]";
+            retStr = "I[" + instrument + "]";
         }
-        for( int i = 0; i < line.length(); i++ ) {
-            beatCount += getBeatVal( line.getNode( i ).getData().getDuration() );
-            retStr = retStr + " " + line.getNode( i ).getData().stringify();
+        for( int i = 0; i < l.length() - 1; i++ ) {
+            beatCount += l.get(i).getBeatVal;
+            retStr = retStr + " " + l.get( i ).stringify();
             if( beatCount == calcBeats() ) {
-                retStr = retStr + " |";
+                retStr = retStr + " | ";
                 beatCount = 0;
             }
         }
         return retStr;
     }
-    public static void main( String[] potatoes ) {
-        Note whitman = new Note( "C", "", "q", 5, false );
-        Note melville = new Note( "C", "", "q", 5, false );
-        Note wilde = new Note( "G", "", "q", 5, false );
-        Note twain = new Note( "G", "", "q", 5, false );
-        Note shaw = new Note( "A", "", "q", 5, false );
-        Note hardy = new Note( "A", "", "q", 5, false );
-        Note dickinson = new Note( "G", "", "q", 5, false );
-        Layer orwell = new Layer();
-        orwell.addNote( whitman );
-        orwell.addNote( melville );
-        orwell.addNote( wilde );
-        orwell.addNote( twain );
-        orwell.addNote( shaw );
-        orwell.addNote( hardy );
-        orwell.addNote( dickinson );
-        orwell.setInstrument( "Guitar" );
-        System.out.println( orwell.stringify() );
-        Player nabakov = new Player();
-        nabakov.play( orwell.stringify() );
-        nabakov.close();
-    }
+
 }
-
-
-
-
-
-
-
-
-
 
 
 

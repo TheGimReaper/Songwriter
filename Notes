@@ -1,26 +1,18 @@
 public class Note {
 
     private String name;
-        private String accidental;
+    private String accidental;
     private String duration;
     private int octave;
     private boolean isDotted;
 
     public Note() {
         name = "C";
-        accidental = "";
+        accidental = "n";
         duration = "q";
         octave = 4;
         isDotted = false;
     }
-    public Note( String nam, String acc, String dur, int oct, boolean isD ) {
-        name = nam;
-        accidental = acc;
-        duration = dur;
-        octave = oct;
-        isDotted = isD;
-    }
-
     public String getName() { return name; }
     public void setName( String n ) { name = n; }
     public String getAccidental() { return accidental; }
@@ -32,7 +24,7 @@ public class Note {
     public boolean getIsDotted() { return isDotted; }
     public void setIsDotted( boolean b ) { isDotted = b; }
     public String stringify() {
-        String retStr = name + accidental + octave  + duration;
+        String retStr = name + octave + duration + accidental;
         if( isDotted ) {
             retStr = retStr + ".";
         }
@@ -61,17 +53,7 @@ public class Note {
     public int getBeatVal() {
         return getBeatVal( duration );
     }
-    public static void main( String[] potatoes ) {
-        Note shelley = new Note( "A", "#", "q", 6, true );
-        System.out.println( shelley.stringify() );
-    }
 }
-
-
-
-
-
-
 
 
 
