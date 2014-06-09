@@ -6,6 +6,14 @@ public class Songwriter {
     private Layer current;
     private int tempo;
 
+    public Songwriter() {
+        Layer temp = new Layer();
+        ArrayList<Layer> layers = new ArrayList<Layer>();
+        layers.add( temp );
+        tempo = 0;
+        current = temp;
+    }
+    
     public void setLayers( ArrayList< Layer > l ) {
         layers = l;
     }
