@@ -5,13 +5,14 @@ public class Songwriter {
     private ArrayList< Layer > layers = new ArrayList< Layer >();
     private Layer current;
     private int tempo;
-
+    private int volume;
     public Songwriter() {
         Layer temp = new Layer();
         ArrayList<Layer> layers = new ArrayList<Layer>();
         layers.add( temp );
         tempo = 0;
         current = temp;
+        volume = 100;
     }
     
     public void setLayers( ArrayList< Layer > l ) {
@@ -31,6 +32,12 @@ public class Songwriter {
     }
     public int getTempo() {
         return tempo;
+    }
+      public void setVolume( int v ) {
+        volume = v;
+    }
+    public int getVolume() {
+        return volume;
     }
 
     public void addLayer() {
@@ -56,7 +63,7 @@ public class Songwriter {
 	}
     }
     public String stringify() {
-	String retStr = "";
+	String retStr = "X[Volume]=" + volume + " ";
 	if( tempo > 0 ) {
             retStr = retStr + "T" + getTempo() + " ";
 	}
