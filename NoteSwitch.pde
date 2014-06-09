@@ -1,7 +1,7 @@
 public class NoteSwitch {
-   boolean Is; int coordx; int coordy; int length; int width; color fill; PImage img;
-   public NoteSwitch(PImage x, int y, int z, int a, int b){
-     Is = false; coordx = y; coordy = z;length = a; width = b; fill = color(102, 102 ,255);img = x;
+   boolean Is; int coordx; int coordy; int length; int width; color fill; Note ok; int duration;
+   public NoteSwitch(Note x, int y, int z, int a, int b , int c){
+     Is = false; coordx = y; coordy = z;length = a; width = b; fill = color(102, 102 ,255);ok = x;duration = c;
    }   
    public boolean get(){
      return Is; }
@@ -12,7 +12,7 @@ public class NoteSwitch {
    public void display(){
     fill(fill);
     rect(coordx , coordy , length , width);
-    image(img , coordx + 50 , coordy , 50 , 100); 
+    ok.display();
    }
    public void change(){
      if (Is)
@@ -21,10 +21,12 @@ public class NoteSwitch {
        turnon();
    }
    public void turnoff(){
+     currentnote = -1;
      Is = false; fill = color (102 , 102 , 255); }
    public void turnon(){
      for (NoteSwitch x : notes)
        x.turnoff();
+     currentnote = duration;  
      Is = true; fill = color (0 , 0 , 102); }
 }
 

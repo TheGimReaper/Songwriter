@@ -1,6 +1,6 @@
-public class Switch {
+public class Add {
    boolean Is; String text; int coordx; int coordy; int length; int width; color fill;
-   public Switch(String x, int a, int b, int y, int z){
+   public Add(String x, int a, int b, int y, int z){
      text = x; Is = false; coordx = y; coordy = z;length = a; width = b; fill = color(102, 255 , 102);
    }
    public boolean get(){
