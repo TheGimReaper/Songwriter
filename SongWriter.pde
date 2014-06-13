@@ -54,7 +54,7 @@ void draw() {
      Player player = new Player();
      String total = "x[Volume]=" + volume.getvolume() * 160 + " ";
      for (int y = 0; y < Tabs.size(); y++ ){
-       total += "V[" + y + "] " + D4i E4i F#4q A4q F#4q E4q D4h. F#4i A4i B4q D5q C#5q A4q F#4h E4q D4i E4i F#4q A4q F#4q E4q D4h. F#4i A4i B4h B4i B4i A4i F#4i E4w D4i E4i F#4w Rq Ri
+       total += "V[" + y + "] " + "D4i E4i F#4q A4q F#4q E4q D4h. F#4i A4i B4q D5q C#5q A4q F#4h E4q D4i E4i F#4q A4q F#4q E4q D4h. F#4i A4i B4h B4i B4i A4i F#4i E4w D4i E4i F#4w Rq Ri
 F#4i B4i C#5i D5q. E5s D5s C#5q A4q F#4h E4q D4i E4i F#4w F#4q Rq. F#4i B4i C#5i D5h E5q. D5s E5s F#5h F#5i D5i B4i D5i D5q A4h.";
        Song play = Tabs.get(y).getsong();
        for (Note x: play.getNotes()){
